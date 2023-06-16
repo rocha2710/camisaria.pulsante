@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exemplo de Carregamento de JSON Externo</title>
+</head>
+<style>
+    body {
+     font-family: Arial, sans-serif;
+     margin: 50;
+     padding: 0;
+     background-color: #0d2384;
+     background-image: url("cat_bg.png");
+       background-repeat: no-repeat;
+       background-size: cover;
+       background-position: top;
+   }
+
+   .container {
+     max-width: 800px;
+     margin: 0 auto;
+     padding: 20px;
+   }
+
+   .search-bar {
+     text-align: center;
+     margin-bottom: 40px;
+   }
+
+   .search-bar input[type="text"] {
+     padding: 10px;
+     width: 300px;
+     font-size: 16px;
+     border-radius: 5px;
+     border: 1px solid #ccc;
+   }
+
+   .search-bar button {
+     padding: 10px 20px;
+     font-size: 16px;
+     border-radius: 5px;
+     background-color: #007bff;
+     color: #fff;
+     border: none;
+     cursor: pointer;
+   }
+
+   .product {
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     margin-bottom: 40px;
+   }
+
+   .product img {
+     width: 150px;
+     height: 150px;
+     margin-right: 20px;
+   }
+
+   .product-info {
+     flex-grow: 1;
+   }
+
+   .product h2 {
+     font-size: 24px;
+     margin-top: 0;
+     margin-bottom: 10px;
+   }
+
+   .product p {
+     margin-top: 0;
+     margin-bottom: 20px;
+   }
+
+   .product a {
+     padding: 10px 20px;
+     background-color: #007bff;
+     color: #fff;
+     text-decoration: none;
+     border-radius: 5px;
+   }
+ </style>
+<body>
+    <div class="search-bar">
+        <input id="search-input" type="text" placeholder="Digite o nome ou código do produto">
+        <button onclick="search()">Pesquisar</button>
+      </div>
+
+
+  <div id="product-list"></div>
+
+  <script>
+    function loadProducts() {
+      fetch('produtos.json') // Substitua pelo caminho correto para o seu arquivo JSON
+        .then(response => response.json())
+        .then(data => {
+          window.products = data;
+          displayProducts(products);
+        })
+        .catch(error => {
+          console.log('Erro ao carregar os produtos:', error);
+        });
+    }
+
+    function search() {
+      const searchInput = document.getElementById("search-input");
+      const searchTerm = searchInput.value.toLowerCase();
+
+      const filteredProducts = products.filter((product) => {
+        return (
+          product.nome.toLowerCase().includes(searchTerm) ||
+          product.codigo.toLowerCase().includes(searchTerm)
+        );
+      });
+
+      displayProducts(filteredProducts);
+    }
+
+    function displayProducts(products) {
+      const productList = document.getElementById("product-list");
+      productList.innerHTML = ""; // Limpa a lista de produtos
+
+      products.forEach((product) => {
+        const productElement = document.createElement("div");
+        productElement.classList.add("product");
+
+        const productImage = document.createElement("img");
+        productImage.src = product.imagem;
+
+        const productInfo = document.createElement("div");
+        const productName = document.createElement("h2");
+        productName.textContent = product.nome;
+        
+        const productDescription = document.createElement("p");
+        productDescription.textContent = product.descricao;
+
+        const productLink = document.createElement("a");
+        productLink.href = product.link;
+        productLink.textContent = "Comprar";
+
+        productInfo.appendChild(productName);
+        productInfo.appendChild(productDescription);
+        productInfo.appendChild(productLink);
+
+        productElement.appendChild(productImage);
+        productElement.appendChild(productInfo);
+        
+        productList.appendChild(productElement);
+      });
+    }
+
+    // Carregar os produtos ao carregar a página
+    window.addEventListener('load', loadProducts);
+  </script>
+</body>
+</html>
