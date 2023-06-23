@@ -11,6 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
 
   <style>
+    
+
     /* CLASSES AUXILIARES */
     .center {
         /*max-width: 70%;*/
@@ -68,6 +70,7 @@
         width: 100%;
         height: 80px;
         background-color: #ccc;
+        opacity: 0.5;
         position: absolute;
         top: 0;
         left: 0;
@@ -104,19 +107,20 @@
        }
     
        .product {
-         display: flex;
+         /*display: flex;*/
          align-items: center;
          justify-content: space-between;
          margin-bottom: 40px;
          background-color: #fff;
+         opacity: 0.8;
          width: 90%;
          padding:30px;
          border-radius: 10px;
        }
     
        .product img {
-         width: 150px;
-         height: 150px;
+         width: 300px;
+         height: 300px;
          margin-right: 20px;
        }
     
@@ -153,6 +157,26 @@
          border-radius: 10px;
          font-size: 2em;
        }
+       .tagList {
+        background-color: #002;
+        border-radius: 3px;
+        color: #fff;
+       }
+       .codProduct {
+        background-color: rgb(209, 9, 9);
+        border-radius: 3px;
+        color: #fff;
+       }
+
+       @media screen and (max-width: 768px) {
+        .w40 {width: 100%;padding-bottom: 10px;}
+        .w60 {width: 100%;padding-bottom: 10px;}
+        .w100 {width: 100%;padding-bottom: 10px;}
+        .product img {
+          max-width: 100%;
+          margin: 10px;
+          }
+    }
      </style>
 </head>
 
@@ -221,37 +245,51 @@
         //atribuindo classes
         productElement.classList.add("product");
         productElement.classList.add("center");
-
+        //div que irá conter os detalhes do produto
         const productInfo = document.createElement("div");
         productInfo.classList.add("w60");
-        const productName = document.createElement("h2");
-        productName.textContent = product.nome;
 
-        const productImageContainer = document.createElement("div");
-        productImageContainer.classList.add("w40");
-        const productImage = document.createElement("img");
-        productImage.src = product.imagem;
-        
+        const codProduct = document.createElement("p");
+        codProduct.textContent = product.codigo;
+        codProduct.classList.add("codProduct");
+
+        const productName = document.createElement("h2");
+        productName.textContent = product.nome; 
+
         const productDescription = document.createElement("p");
         productDescription.textContent = product.descricao;
+
+        const productTag = document.createElement("p");
+        productTag.textContent = product.tags;
+        productTag.classList.add("tagList");
 
         const productLink = document.createElement("a");
         productLink.href = product.link;
         productLink.textContent = "Comprar";
-
+        //div que contem a imagem
+        const productImageContainer = document.createElement("div");
+        productImageContainer.classList.add("w40");
+        const productImage = document.createElement("img");
+        productImage.src = product.imagem;  
+        //html para quebrar linha
+        const quebraLinha = document.createElement("br");
+        //html para criar o clear do float
         const productClear = document.createElement("div");
         productClear.classList.add("clear");
 
+        //adicionando os itens e respeitando a hierarquia na div de detalhes do produto
+        productInfo.appendChild(codProduct);
         productInfo.appendChild(productName);
         productInfo.appendChild(productDescription);
+        productInfo.appendChild(productTag);
+        productInfo.appendChild(quebraLinha);
         productInfo.appendChild(productLink);
-        
-        
-        productImageContainer.appendChild(productImage);
         productElement.appendChild(productInfo);
         productElement.appendChild(productImageContainer);
         productElement.appendChild(productClear);
-
+        //adicionando a div da imagem
+        productImageContainer.appendChild(productImage);
+        //adicionando tudo
         productList.appendChild(productElement);
       });
     }

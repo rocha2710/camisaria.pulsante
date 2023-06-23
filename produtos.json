@@ -1,25 +1,11 @@
 [
     {
-      "nome": "PERFUME IMPORTADO SILVER SCENT ► COD: CP01",
-      "codigo": "123",
+      "nome": "PERFUME IMPORTADO SILVER SCENT",
+      "codigo": "COD: #123",
       "descricao": "O perfume Silver Scent Intense é a escolha perfeita para o homem sedutor que busca exalar confiança e charme irresistíveis. Sua fragrância intensa e envolvente combina notas cítricas refrescantes com especiarias exóticas e notas amadeiradas sensuais, criando uma experiência olfativa sedutora e duradoura. Com projeção poderosa e um design elegante, o Silver Scent Intense é a compra imperdível para aqueles que desejam deixar uma impressão marcante e inesquecível por onde passam. Não perca a chance de adquirir essa fragrância irresistível e elevar o seu poder de sedução!",
-      "imagem": "https://drive.google.com/file/d/13_7NiLD83vG5Ts1texHfYFpSJf3Wn4uM/view",
+      "imagem": "https://th.bing.com/th/id/R.144b7bb7a5736b60b02ae5b889013aeb?rik=mgpk5RdWdguO8w&pid=ImgRaw&r=0",
       "link": "pagina_compra1.html",
-      "tags": "perfume importado"
-    },
-    {
-      "nome": "RELÓGIO DOURADO",
-      "codigo": "456",
-      "descricao": "Descrição do Produto 2",
-      "imagem": "imagem2.jpg",
-      "link": "pagina_compra2.html"
-    },
-    {
-        "nome": "CAMISA MASCULINA",
-        "codigo": "3",
-        "descricao": "ESTA É UMA CAMISA INCRIVEL",
-        "imagem": "imagem2.jpg",
-        "link": "pagina_compra2.html"
-      }
+      "tags": "TAG: PERFUME IMPORTADO"
+    }
   ]
   
