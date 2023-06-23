@@ -178,6 +178,15 @@
           }
     }
      </style>
+     <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-26VXGDSTND"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-26VXGDSTND');
+</script>
 </head>
 
 <body>
@@ -255,9 +264,12 @@
 
         const productName = document.createElement("h2");
         productName.textContent = product.nome; 
-
+        //habilitar html
         const productDescription = document.createElement("p");
-        productDescription.textContent = product.descricao;
+        productDescription.innerHTML = product.descricao;
+
+
+
 
         const productTag = document.createElement("p");
         productTag.textContent = product.tags;
